@@ -1,13 +1,29 @@
 import Avatar from '../Avatar';
-import { Container } from './styled';
+import {
+	Container,
+	MainContainer,
+	TextContainer,
+	FooterContainer,
+} from './styled';
+interface IUserCardProps {
+	user: {
+		id: number;
+		name: string;
+		image: string;
+	};
+}
 
-export default function UserCard() {
-	const testeImg =
-		'https://img.freepik.com/fotos-gratis/estilo-de-vida-beleza-e-moda-conceito-de-emocoes-de-pessoas-jovem-gerente-de-escritorio-feminino-asiatico-ceo-com-expressao-satisfeita-em-pe-sobre-um-fundo-branco-sorrindo-com-os-bracos-cruzados-sobre-o-peito_1258-59329.jpg';
-
+export default function UserCard({ user }: IUserCardProps) {
 	return (
 		<Container>
-			<Avatar size={5.5} image={testeImg} />
+			<MainContainer>
+				<Avatar size={5} image={user.image} />
+				<TextContainer>
+					<strong>{user.name}</strong>
+					<p>contacts</p>
+				</TextContainer>
+			</MainContainer>
+			<FooterContainer>Jan 15, 2019</FooterContainer>
 		</Container>
 	);
 }

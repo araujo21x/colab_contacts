@@ -1,30 +1,32 @@
 import UserCard from '../../components/UserCard';
-import { Container, Teste } from './styles';
+import { Container, CardContainer } from './styles';
 
 export default function Home() {
+	const testeImg =
+		'https://img.freepik.com/fotos-gratis/estilo-de-vida-beleza-e-moda-conceito-de-emocoes-de-pessoas-jovem-gerente-de-escritorio-feminino-asiatico-ceo-com-expressao-satisfeita-em-pe-sobre-um-fundo-branco-sorrindo-com-os-bracos-cruzados-sobre-o-peito_1258-59329.jpg';
 	const users = [
-		{ name: 'Lucas', id: 1 },
-		{ name: 'Lucas', id: 2 },
-		{ name: 'Lucas', id: 3 },
-		{ name: 'Lucas', id: 4 },
-		{ name: 'Lucas', id: 5 },
-		{ name: 'Lucas', id: 6 },
-		{ name: 'Lucas', id: 7 },
-		{ name: 'Lucas', id: 8 },
-		{ name: 'Lucas', id: 9 },
-		{ name: 'Lucas', id: 10 },
-		{ name: 'Lucas', id: 11 },
-		{ name: 'Lucas', id: 12 },
-		{ name: 'Lucas', id: 13 },
+		{ name: 'Lucas', id: 1, image: testeImg },
+		{ name: 'Lucas', id: 2, image: testeImg },
+		{ name: 'Lucas', id: 3, image: testeImg },
+		{ name: 'Lucas', id: 4, image: testeImg },
+		{ name: 'Lucas', id: 5, image: testeImg },
+		{ name: 'Lucas', id: 6, image: testeImg },
+		{ name: 'Lucas', id: 7, image: testeImg },
+		{ name: 'Lucas', id: 8, image: testeImg },
+		{ name: 'Lucas', id: 9, image: testeImg },
+		{ name: 'Lucas', id: 10, image: testeImg },
+		{ name: 'Lucas', id: 11, image: testeImg },
+		{ name: 'Lucas', id: 12, image: testeImg },
+		{ name: 'Lucas', id: 13, image: testeImg },
 	];
 
 	return (
-		<Teste>
-			<Container>
+		<Container>
+			<CardContainer>
 				{users.map((user) => {
-					return <UserCard key={user.id} />;
+					return <UserCard key={user.id} user={user} />;
 				})}
-			</Container>
-		</Teste>
+			</CardContainer>
+		</Container>
 	);
 }
