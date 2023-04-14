@@ -15,9 +15,6 @@ export default function Home() {
 		{ name: 'Lucas', id: 8, image: testeImg },
 		{ name: 'Lucas', id: 9, image: testeImg },
 		{ name: 'Lucas', id: 10, image: testeImg },
-		{ name: 'Lucas', id: 11, image: testeImg },
-		{ name: 'Lucas', id: 12, image: testeImg },
-		{ name: 'Lucas', id: 13, image: testeImg },
 	];
 
 	return (

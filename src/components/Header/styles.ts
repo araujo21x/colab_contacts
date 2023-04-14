@@ -25,18 +25,3 @@ export const LogoContainer = styled.div`
 		font-size: 2.3rem;
 	}
 `;
-
-export const NavContainer = styled.nav`
-	margin-left: 12rem;
-`;
-
-export const Link = styled(NavLink)`
-	text-decoration: none;
-	font-size: 1.23rem;
-
-	&:hover {
-		strong {
-			color: ${({ theme }) => theme.colors.primary.main};
-		}
-	}
-`;
