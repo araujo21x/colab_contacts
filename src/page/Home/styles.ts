@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
 	margin-top: 1rem;
 	width: 98vw;
-	height: 87.5vh;
+	height: 79vh;
 `;
 
 export const CardContainer = styled.div`

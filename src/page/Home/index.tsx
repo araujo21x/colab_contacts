@@ -1,27 +1,41 @@
-import UserCard from '../../components/UserCard';
+import { useCallback, useEffect, useState } from 'react';
+import ContactCard from '../../components/ContactCard';
 import { Container, CardContainer } from './styles';
+import contactsService, { IContact } from '../../services/ContactsService';
+import Loader from '../../components/Loader';
 
 export default function Home() {
-	const testeImg =
-		'https://img.freepik.com/fotos-gratis/estilo-de-vida-beleza-e-moda-conceito-de-emocoes-de-pessoas-jovem-gerente-de-escritorio-feminino-asiatico-ceo-com-expressao-satisfeita-em-pe-sobre-um-fundo-branco-sorrindo-com-os-bracos-cruzados-sobre-o-peito_1258-59329.jpg';
-	const users = [
-		{ name: 'Lucas', id: 1, image: testeImg },
-		{ name: 'Lucas', id: 2, image: testeImg },
-		{ name: 'Lucas', id: 3, image: testeImg },
-		{ name: 'Lucas', id: 4, image: testeImg },
-		{ name: 'Lucas', id: 5, image: testeImg },
-		{ name: 'Lucas', id: 6, image: testeImg },
-		{ name: 'Lucas', id: 7, image: testeImg },
-		{ name: 'Lucas', id: 8, image: testeImg },
-		{ name: 'Lucas', id: 9, image: testeImg },
-		{ name: 'Lucas', id: 10, image: testeImg },
-	];
+	const [contacts, setContacts] = useState<IContact[]>([]);
+	const [limit] = useState<number>(21);
+	const [page] = useState<number>(1);
+	const [isLoading, setIsLoading] = useState(true);
+
+	const loadContacts = useCallback(async () => {
+		try {
+			setIsLoading(true);
+			const contactsList: IContact[] = await contactsService.listContacts(
+				page,
+				limit
+			);
+
+			setContacts(contactsList);
+		} catch (err) {
+			alert(err);
+		} finally {
+			setIsLoading(false);
+		}
+	}, [limit, page]);
+
+	useEffect(() => {
+		loadContacts();
+	}, [loadContacts]);
 
 	return (
 		<Container>
+			<Loader isLoading={isLoading} />
 			<CardContainer>
-				{users.map((user) => {
-					return <UserCard key={user.id} user={user} />;
+				{contacts.map((contact: IContact) => {
+					return <ContactCard key={contact.login.uuid} contact={contact} />;
 				})}
 			</CardContainer>
 		</Container>
