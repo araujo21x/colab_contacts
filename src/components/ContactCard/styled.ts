@@ -50,33 +50,45 @@ export const FooterContainer = styled.div`
 
 export const ContainerHover = styled.div`
 	z-index: 1;
-	background-color: rgba(124, 162, 214, 0.9);
 	width: 100%;
 	height: 100%;
-	border-radius: 10px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 
 	button {
-		padding: 0.7rem 2.6rem;
-		border: 1.4px solid white;
+		visibility: hidden;
+	}
+
+	&:hover {
+		transition: 0.3s linear;
+		background-color: rgba(124, 162, 214, 0.9);
 		border-radius: 10px;
-		background-color: transparent;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 
-		font-size: 1.2rem;
-		font-weight: bold;
-		color: ${({ theme }) => theme.colors.back};
+		button {
+			visibility: visible;
+			padding: 0.7rem 2.6rem;
+			border: 1.4px solid white;
+			border-radius: 10px;
+			background-color: transparent;
 
-		&:hover {
-			color: rgba(124, 162, 214, 0.9);
-			transition: 0.2s linear;
-			background-color: ${({ theme }) => theme.colors.back};
+			font-size: 1.2rem;
+			font-weight: bold;
+			color: ${({ theme }) => theme.colors.back};
+
+			&:hover {
+				color: rgba(124, 162, 214, 0.9);
+				transition: 0.2s linear;
+				background-color: ${({ theme }) => theme.colors.back};
+			}
 		}
 	}
 `;
 
 export const ContainerDefault = styled.div`
 	position: absolute;
+	width: 100%;
+	height: 100%;
+
 	padding: 1rem;
 `;

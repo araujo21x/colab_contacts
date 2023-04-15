@@ -28,6 +28,7 @@ export default function ContactCard({
 			<ContainerHover>
 				<button onClick={handlerModalContent}>Visualizar</button>
 			</ContainerHover>
+
 			<ContainerDefault>
 				<MainContainer>
 					<Avatar size={5.5} image={contact.picture.medium} />
