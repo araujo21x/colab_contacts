@@ -15,6 +15,7 @@ export const ContainerClose = styled.div`
 	position: absolute;
 	width: 100%;
 	height: 100%;
+	cursor: pointer;
 `;
 
 export const ContainerModal = styled.div`
@@ -43,6 +44,7 @@ export const ContainerBackGround = styled.div`
 	h1 {
 		color: ${({ theme }) => theme.colors.back};
 		font-size: 1.2em;
+		cursor: pointer;
 
 		margin: 0.3rem 0.6rem;
 	}

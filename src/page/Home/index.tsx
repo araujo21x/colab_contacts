@@ -4,20 +4,22 @@ import { Container, CardContainer } from './styles';
 import contactsService, { IContact } from '../../services/ContactsService';
 import Loader from '../../components/Loader';
 import ModalContact from '../../components/ModalContact';
+import Pagination from '../../components/Pagination';
 
 export default function Home() {
 	const [contacts, setContacts] = useState<IContact[]>([]);
-	const [limit] = useState<number>(20);
-	const [page] = useState<number>(1);
+	const [limitPerPage, setLimitPerPage] = useState<number>(25);
+	const [currentPage, serCurrentPage] = useState<number>(1);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const [modalContent, setModalContent] = useState<IContact | null>(null);
+	const totalNumberOfItems = 200;
 
 	const loadContacts = useCallback(async () => {
 		try {
 			setIsLoading(true);
 			const contactsList: IContact[] = await contactsService.listContacts(
-				page,
-				limit
+				currentPage,
+				limitPerPage
 			);
 
 			setContacts(contactsList);
@@ -28,7 +30,7 @@ export default function Home() {
 				setIsLoading(false);
 			}, 1000);
 		}
-	}, [limit, page]);
+	}, [limitPerPage, currentPage]);
 
 	useEffect(() => {
 		loadContacts();
@@ -38,25 +40,42 @@ export default function Home() {
 		setModalContent(contact);
 	}
 
-	return (
-		<Container>
-			<Loader isLoading={isLoading} />
-			<ModalContact
-				contact={modalContent}
-				onModalContent={handlerModalContent}
-			/>
+	function handlerCurrentPage(page: number) {
+		serCurrentPage(page);
+	}
 
-			<CardContainer>
-				{contacts.map((contact: IContact) => {
-					return (
-						<ContactCard
-							key={contact.login.uuid}
-							contact={contact}
-							onModalContent={handlerModalContent}
-						/>
-					);
-				})}
-			</CardContainer>
-		</Container>
+	function handlerLimitPerPage(page: number) {
+		setLimitPerPage(page);
+	}
+
+	return (
+		<>
+			<Container>
+				<Loader isLoading={isLoading} />
+				<ModalContact
+					contact={modalContent}
+					onModalContent={handlerModalContent}
+				/>
+
+				<CardContainer>
+					{contacts.map((contact: IContact) => {
+						return (
+							<ContactCard
+								key={contact.login.uuid}
+								contact={contact}
+								onModalContent={handlerModalContent}
+							/>
+						);
+					})}
+				</CardContainer>
+			</Container>
+			<Pagination
+				totalNumberOfItems={totalNumberOfItems}
+				limitPerPage={limitPerPage}
+				currentPage={currentPage}
+				onCurrentPage={handlerCurrentPage}
+				onLimitPerPage={handlerLimitPerPage}
+			/>
+		</>
 	);
 }
