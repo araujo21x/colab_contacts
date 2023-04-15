@@ -10,11 +10,19 @@ import {
 
 interface IUserCardProps {
 	contact: IContact;
+	onModalContent: (contact: IContact | null) => void;
 }
 
-export default function ContactCard({ contact }: IUserCardProps) {
+export default function ContactCard({
+	contact,
+	onModalContent,
+}: IUserCardProps) {
+	function handlerModalContent() {
+		onModalContent(contact);
+	}
+
 	return (
-		<Container>
+		<Container onClick={handlerModalContent}>
 			<MainContainer>
 				<Avatar size={5.5} image={contact.picture.medium} />
 				<TextContainer>

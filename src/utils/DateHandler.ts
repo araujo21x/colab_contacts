@@ -20,13 +20,21 @@ class DateHandler {
 		if (typeof date === 'string') date = new Date(date);
 
 		const monthName = this.MONTH_NAME[date.getMonth() as IMonthNumberKey];
-		const day = this.completeDayOrMonth(date.getDate());
+		const day = this.addZero(date.getDate());
 
 		return `${monthName.slice(0, 3)} ${day}, ${date.getFullYear()}`;
 	}
 
-	private completeDayOrMonth(value: number): string {
+	private addZero(value: number): string {
 		return `${value >= 10 ? value : `0${value}`}`;
+	}
+
+	public clientFormat(date: Date | string): string {
+		if (typeof date === 'string') date = new Date(date);
+
+		return `${this.addZero(date.getDate())}/${this.addZero(
+			date.getMonth() + 1
+		)}/${date.getFullYear()}`;
 	}
 }
 
