@@ -19,8 +19,8 @@ const DefaultTheme: IMyTheme = {
 			dark: '#F63131',
 		},
 		gray: {
-			main: '#CFCFCF',
-			dark: '#70706F',
+			main: '#8f8d8d',
+			dark: '#6E6E6E',
 		},
 	},
 };

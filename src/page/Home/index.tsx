@@ -8,7 +8,7 @@ import Pagination from '../../components/Pagination';
 
 export default function Home() {
 	const [contacts, setContacts] = useState<IContact[]>([]);
-	const [limitPerPage, setLimitPerPage] = useState<number>(25);
+	const [limitPerPage, setLimitPerPage] = useState<number>(20);
 	const [currentPage, serCurrentPage] = useState<number>(1);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const [modalContent, setModalContent] = useState<IContact | null>(null);

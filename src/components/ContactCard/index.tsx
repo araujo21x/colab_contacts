@@ -36,8 +36,11 @@ export default function ContactCard({
 						<strong>
 							{contact.name.title} {contact.name.first} {contact.name.last}
 						</strong>
-
-						<p>Sexo: {contact.gender === 'male' ? 'Masculino' : 'Feminino'}</p>
+						<label>
+							Sexo:
+							<p>{contact.gender === 'male' ? 'Masculino' : 'Feminino'} - </p>
+							<p>{contact.dob.age} Anos</p>
+						</label>
 					</TextContainer>
 				</MainContainer>
 				<FooterContainer>

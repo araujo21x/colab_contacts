@@ -33,11 +33,20 @@ export const TextContainer = styled.div`
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
-	p {
+	label {
+		display: flex;
+		flex-direction: row;
+		gap: 0.2rem;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
-		color: ${({ theme }) => theme.colors.primary.dark};
+
+		p {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			color: ${({ theme }) => theme.colors.primary.dark};
+		}
 	}
 `;
 
