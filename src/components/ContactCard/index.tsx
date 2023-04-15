@@ -6,6 +6,8 @@ import {
 	MainContainer,
 	TextContainer,
 	FooterContainer,
+	ContainerHover,
+	ContainerDefault,
 } from './styled';
 
 interface IUserCardProps {
@@ -22,20 +24,25 @@ export default function ContactCard({
 	}
 
 	return (
-		<Container onClick={handlerModalContent}>
-			<MainContainer>
-				<Avatar size={5.5} image={contact.picture.medium} />
-				<TextContainer>
-					<strong>
-						{contact.name.title} {contact.name.first} {contact.name.last}
-					</strong>
+		<Container>
+			<ContainerHover>
+				<button onClick={handlerModalContent}>Visualizar</button>
+			</ContainerHover>
+			<ContainerDefault>
+				<MainContainer>
+					<Avatar size={5.5} image={contact.picture.medium} />
+					<TextContainer>
+						<strong>
+							{contact.name.title} {contact.name.first} {contact.name.last}
+						</strong>
 
-					<p>Sexo: {contact.gender === 'male' ? 'Masculino' : 'Feminino'}</p>
-				</TextContainer>
-			</MainContainer>
-			<FooterContainer>
-				{DateHandler.convertToCard(contact.registered.date)}
-			</FooterContainer>
+						<p>Sexo: {contact.gender === 'male' ? 'Masculino' : 'Feminino'}</p>
+					</TextContainer>
+				</MainContainer>
+				<FooterContainer>
+					{DateHandler.convertToCard(contact.registered.date)}
+				</FooterContainer>
+			</ContainerDefault>
 		</Container>
 	);
 }

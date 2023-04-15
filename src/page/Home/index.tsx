@@ -7,7 +7,7 @@ import ModalContact from '../../components/ModalContact';
 
 export default function Home() {
 	const [contacts, setContacts] = useState<IContact[]>([]);
-	const [limit] = useState<number>(21);
+	const [limit] = useState<number>(20);
 	const [page] = useState<number>(1);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const [modalContent, setModalContent] = useState<IContact | null>(null);

@@ -35,7 +35,6 @@ export const ContainerModal = styled.div`
 export const ContainerBackGround = styled.div`
 	width: 100%;
 	height: 6.5rem;
-
 	background-color: ${({ theme }) => theme.colors.primary.dark};
 	border-radius: 10px;
 	box-shadow: 3px 3px 3px 3px rgba(207, 207, 207, 0.2);
